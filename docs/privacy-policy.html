@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slůvko — Zásady ochrany osobních údajů</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --sand: #F2EADA;
+    --sand-deep: #FBF8F0;
+    --ink: #2A2318;
+    --ink-soft: #6D6048;
+    --moss: #5C6D42;
+    --moss-ink: #46552F;
+    --ochre: #A9752F;
+    --rule: rgba(42, 35, 24, 0.15);
+    --rule-strong: rgba(42, 35, 24, 0.28);
+    --shadow: rgba(42, 35, 24, 0.10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --sand:#1D1911; --sand-deep:#262119; --ink:#EEE7D7; --ink-soft:#B3A88F; --moss:#91A870; --moss-ink:#A9BF88; --ochre:#DDA85B; --rule:rgba(238,231,215,.14); --rule-strong:rgba(238,231,215,.26); --shadow:rgba(0,0,0,.35); }
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--sand); color: var(--ink); font-family: "Public Sans", -apple-system, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.65; margin: 0; padding: 0; }
+  .page { max-width: 700px; margin: 0 auto; padding: 64px 24px 96px; }
+  .doc-head { margin-bottom: 40px; }
+  .tiles { display: flex; gap: 6px; margin-bottom: 22px; }
+  .tiles span { width: 15px; height: 15px; border-radius: 4px; display: inline-block; }
+  .tiles span:nth-child(1), .tiles span:nth-child(4) { background: var(--moss); }
+  .tiles span:nth-child(2) { background: var(--ochre); }
+  .tiles span:nth-child(3), .tiles span:nth-child(5) { background: var(--rule-strong); }
+  h1 { font-family: "Roboto Slab", "Georgia", serif; font-weight: 700; font-size: clamp(30px, 5vw, 40px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .subtitle { color: var(--ink-soft); font-size: 17px; margin: 0 0 18px; max-width: 54ch; }
+  .meta { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-soft); display: flex; gap: 18px; flex-wrap: wrap; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 12px 0; }
+  .meta strong { color: var(--ink); font-weight: 500; }
+  nav.crumbs { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; letter-spacing: 0.02em; margin-bottom: 28px; }
+  nav.crumbs a { color: var(--moss-ink); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+  nav.crumbs a:hover { border-bottom-color: var(--moss-ink); }
+  section { margin-top: 40px; }
+  .sec-label { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
+  .sec-num { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; color: var(--ochre); letter-spacing: 0.04em; }
+  h2 { font-family: "Roboto Slab", "Georgia", serif; font-weight: 600; font-size: 21px; margin: 0; letter-spacing: -0.005em; }
+  section > .sec-label + p, section > .sec-label + ul, section > .sec-label + table { margin-top: 14px; }
+  p { margin: 0 0 14px; max-width: 64ch; }
+  ul { margin: 0 0 14px; padding-left: 22px; max-width: 62ch; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--moss-ink); }
+  strong { font-weight: 600; }
+  a { color: var(--moss-ink); }
+  .data-table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; font-size: 15.5px; }
+  .data-table th, .data-table td { text-align: left; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .data-table th { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); font-weight: 500; }
+  .table-wrap { overflow-x: auto; }
+  .callout { background: var(--sand-deep); border: 1px solid var(--rule); border-left: 3px solid var(--moss); border-radius: 6px; padding: 16px 18px; margin: 16px 0; box-shadow: 0 1px 2px var(--shadow); }
+  .callout p:last-child { margin-bottom: 0; }
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: 14.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer a { color: var(--moss-ink); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="doc-head">
+    <div class="tiles"><span></span><span></span><span></span><span></span><span></span></div>
+    <h1>Zásady ochrany osobních údajů</h1>
+    <p class="subtitle">Slůvko — česká slovní hra pro Android. Vysvětlujeme, jaká data hra ukládá, kdy a proč, a co s tím můžeš dělat.</p>
+    <div class="meta">
+      <span>Aplikace: <strong>Slůvko</strong></span>
+      <span>Platnost od: <strong>27. 8. 2026</strong></span>
+      <span>Verze: <strong>1.0</strong></span>
+    </div>
+  </div>
+
+  <nav class="crumbs"><a href="index.html">← Slůvko</a> · <a href="terms.html">Podmínky použití →</a></nav>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">01</span><h2>Kdo tento dokument vydává</h2></div>
+    <p>Slůvko vyvíjí a provozuje <strong>Milan Langhamer</strong> jako nezávislý vývojář (dále jen „my" nebo „vývojář"). Tyto zásady popisují, jaká data aplikace Slůvko zpracovává, když si ji nainstaluješ a hraješ.</p>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">02</span><h2>Jaká data shromažďujeme</h2></div>
+    <p>Slůvko je navržené tak, aby fungovalo s minimem dat. Většina hry běží čistě lokálně v tvém telefonu, bez jakéhokoli účtu.</p>
+    <div class="table-wrap">
+      <table class="data-table">
+        <tr><th>Co</th><th>Kdy vzniká</th><th>Kde se ukládá</th></tr>
+        <tr>
+          <td>Herní postup — statistiky, série, vyřešená slova, zlaťáky, odznaky, nastavení</td>
+          <td>Vždy, jen hraním</td>
+          <td>Pouze lokálně v telefonu. Nikam se neodesílá.</td>
+        </tr>
+        <tr>
+          <td>Veřejný profil Google (jméno, ikonka)</td>
+          <td>Jen když se dobrovolně přihlásíš přes Google Play Games kvůli žebříčku</td>
+          <td>Google Play Games Services (spravuje Google)</td>
+        </tr>
+        <tr>
+          <td>ID nákupu a produktu (např. balíček zlaťáků)</td>
+          <td>Jen při skutečném nákupu v appce</td>
+          <td>Google Play Billing (platební údaje vidí jen Google, my ne)</td>
+        </tr>
+        <tr>
+          <td>Reklamní ID zařízení a technická data o zařízení</td>
+          <td>Jen při zobrazení reklamy (dobrovolné, za odměnu)</td>
+          <td>Unity LevelPlay a jím zapojené reklamní sítě</td>
+        </tr>
+      </table>
+    </div>
+    <div class="callout">
+      <p>Bez přihlášení a bez sledování reklamy Slůvko nesbírá o tobě vůbec nic, co by opustilo tvůj telefon.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">03</span><h2>Přihlášení přes Google Play Games</h2></div>
+    <p>Přihlášení je volitelné a slouží výhradně k zobrazení tvého jména/ikonky v žebříčku série (streak). Přihlášení a odhlášení spravuješ ve svém Google účtu — Slůvko samo hesla ani platební údaje nikdy nevidí.</p>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">04</span><h2>Nákupy v aplikaci</h2></div>
+    <p>Nákupy (balíčky zlaťáků, odstranění reklam) zpracovává výhradně Google Play Billing. Platební kartu nebo jiné platební údaje nikdy nevidíme — dostaneme jen potvrzení, že nákup proběhl, a jeho identifikátor.</p>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">05</span><h2>Reklamy</h2></div>
+    <p>Reklamy v appce jsou vždy dobrovolné (zhlédnutí za odměnu — zlaťáky nebo nápovědu) a jedou přes mediační platformu <strong>Unity LevelPlay</strong>. Ta podle aktuální nabídky zapojuje různé reklamní sítě (například Unity Ads, AppLovin nebo Meta Audience Network) — seznam se může měnit bez našeho přímého zásahu do kódu appky.</p>
+    <p>Tyto sítě mohou pro výběr a měření reklam zpracovávat reklamní ID zařízení (GAID), přibližnou polohu odvozenou z IP adresy a další technická data o zařízení, podle vlastních zásad ochrany osobních údajů dané sítě.</p>
+    <div class="callout">
+      <p>Při prvním spuštění se tě appka zeptá, jestli s personalizací reklam souhlasíš — bez souhlasu uvidíš jen obecné, nepersonalizované reklamy. Volbu můžeš kdykoli změnit v Nastavení → Personalizovaná reklama.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">06</span><h2>Koho o tvá data žádáme sdílet</h2></div>
+    <ul>
+      <li><strong>Google Play Games Services</strong> — jen pokud se přihlásíš, pro žebříček.</li>
+      <li><strong>Google Play Billing</strong> — jen při nákupu, pro zpracování platby.</li>
+      <li><strong>Unity LevelPlay</strong> a jím zapojené reklamní sítě — jen při zhlédnutí reklamy.</li>
+    </ul>
+    <p>Data neprodáváme a nesdílíme je s nikým jiným než výše uvedenými službami, které si sám aktivně vyžádáš (přihlášení, nákup, reklama).</p>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">07</span><h2>Děti</h2></div>
+    <p>Slůvko není cíleně zaměřené na děti do 13 let a neshromažďuje vědomě data dětí nad rámec výše popsaného. Pokud jsi rodič a máš obavu ohledně dat svého dítěte, napiš nám na kontakt níže.</p>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">08</span><h2>Tvoje volby</h2></div>
+    <ul>
+      <li><strong>Smazání herních dat</strong> — odinstalováním appky se lokální data z telefonu smažou.</li>
+      <li><strong>Odhlášení z Google účtu</strong> — kdykoli v appce nebo v nastavení Google účtu na telefonu.</li>
+      <li><strong>Dotaz nebo žádost o výmaz</strong> (např. dle GDPR pro uživatele z EU) — napiš na kontakt níže, odpovíme co nejdřív.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">09</span><h2>Změny těchto zásad</h2></div>
+    <p>Pokud se zásady změní, aktualizujeme datum platnosti nahoře. Zásadní změny (např. nová kategorie sbíraných dat) oznámíme i v appce.</p>
+  </section>
+
+  <section>
+    <div class="sec-label"><span class="sec-num">10</span><h2>Kontakt</h2></div>
+    <p>Dotazy k ochraně osobních údajů: <a href="mailto:langhamer.milan@gmail.com">langhamer.milan@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <span>Slůvko · Milan Langhamer</span>
+    <span><a href="terms.html">Podmínky použití →</a></span>
+  </footer>
+</div>
+</body>
+</html>
