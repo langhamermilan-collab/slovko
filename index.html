@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slůvko</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --sand: #F2EADA; --sand-deep: #FBF8F0; --ink: #2A2318; --ink-soft: #6D6048;
+    --moss: #5C6D42; --moss-ink: #46552F; --ochre: #A9752F;
+    --rule: rgba(42, 35, 24, 0.15);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --sand:#1D1911; --sand-deep:#262119; --ink:#EEE7D7; --ink-soft:#B3A88F; --moss:#91A870; --moss-ink:#A9BF88; --ochre:#DDA85B; --rule:rgba(238,231,215,.14); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--sand); color: var(--ink);
+    font-family: "Public Sans", -apple-system, "Segoe UI", sans-serif;
+    margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  }
+  .card { max-width: 480px; padding: 56px 32px; text-align: center; }
+  .tiles { display: flex; gap: 8px; justify-content: center; margin-bottom: 26px; }
+  .tiles span { width: 20px; height: 20px; border-radius: 5px; display: inline-block; }
+  .tiles span:nth-child(1), .tiles span:nth-child(4) { background: var(--moss); }
+  .tiles span:nth-child(2) { background: var(--ochre); }
+  .tiles span:nth-child(3), .tiles span:nth-child(5) { background: var(--rule); }
+  h1 { font-family: "Roboto Slab", "Georgia", serif; font-weight: 700; font-size: 44px; margin: 0 0 12px; letter-spacing: -0.01em; }
+  p { color: var(--ink-soft); font-size: 17px; line-height: 1.6; margin: 0 0 32px; }
+  .links { display: flex; flex-direction: column; gap: 10px; }
+  .links a {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 14px; letter-spacing: 0.02em;
+    color: var(--ink); text-decoration: none; padding: 14px 20px;
+    border: 1px solid var(--rule); border-radius: 8px; transition: border-color .15s;
+  }
+  .links a:hover { border-color: var(--moss-ink); }
+  footer { margin-top: 40px; color: var(--ink-soft); font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="tiles"><span></span><span></span><span></span><span></span><span></span></div>
+    <h1>Slůvko</h1>
+    <p>Česká slovní hra pro Android. Uhodni skryté slovo na pár pokusů — nová hádanka každý den.</p>
+    <div class="links">
+      <a href="privacy-policy.html">🔒 Zásady ochrany osobních údajů</a>
+      <a href="terms.html">📜 Podmínky použití</a>
+      <a href="mailto:langhamer.milan@gmail.com">✉️ langhamer.milan@gmail.com</a>
+    </div>
+    <footer>Slůvko · Milan Langhamer</footer>
+  </div>
+</body>
+</html>
